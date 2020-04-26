@@ -1,0 +1,29 @@
+<div class="container">
+<h2>Sign Up</h2>
+<form name="regForm" novalidate>
+  <label>First Name:<input type="text" name="firstName" ng-model="registrationCtrl.firstName" required style="color:black;"/></label>
+  <span ng-if="regForm.firstName.$error.required && regForm.firstName.$touched">First Name is Required</span>
+  <br>
+  <label>Last Name:<input type="text" name="lastName" ng-model="registrationCtrl.lastName" required style="color:black;"/></label>
+  <span ng-if="regForm.lastName.$error.required && regForm.lastName.$touched">Last Name is Required</span>
+  <br>
+  <label>Email Address:<input type="email" name="emailAddress" ng-model="registrationCtrl.emailAddress" required style="color:black;"/></label>
+  <span ng-if="regForm.emailAddress.$invalid && regForm.emailAddress.$touched">Valid Email Address is Required</span>
+  <br>
+  <label>Phone Number:<input type="text" name="phoneNumber" ng-model="registrationCtrl.phoneNumber" required pattern="(\d{3})-(\d{3})-(\d{4})" style="color:black;"/></label>
+  <span ng-if="regForm.phoneNumber.$invalid && regForm.phoneNumber.$touched">Valid Phone Number is Required ###-###-####</span>
+  <br>
+  <label>Favorite Dish:<input type="text" name="favoriteDish" ng-model="registrationCtrl.favoriteDish" required style="color:black;"
+    ng-change="registrationCtrl.checkFavoriteDish()"/></label>
+  <span ng-if="regForm.favoriteDish.$error.required && regForm.favoriteDish.$touched">Favorite Dish is Required</span>
+  <span ng-if="!(regForm.favoriteDish.$error.required && regForm.favoriteDish.$touched) && registrationCtrl.invalidItem">No such menu item exists</span>
+  <br>
+  <button ng-disabled="regForm.$invalid || (!(regForm.favoriteDish.$error.required && regForm.favoriteDish.$touched) && registrationCtrl.invalidItem)"
+  ng-click="registrationCtrl.setUser(); registrationCtrl.submit()"
+  style="color:black;">
+    Submit
+  </button>
+  <br>
+  <span ng-if="registrationCtrl.completed">Your information has been saved.</span>
+</form>
+</div>

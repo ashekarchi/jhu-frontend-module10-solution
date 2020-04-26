@@ -1,0 +1,25 @@
+<div class="container">
+<h2>My Info</h2>
+<div ng-if="registrationCtrl.userInfo.firstName">
+  <label>First Name: {{ registrationCtrl.userInfo.firstName }}</label>
+  <br>
+  <label>Last Name: {{ registrationCtrl.userInfo.lastName }}</label>
+  <br>
+  <label>Email Address: {{ registrationCtrl.userInfo.emailAddress }}</label>
+  <br>
+  <label>Phone Number: {{ registrationCtrl.userInfo.phoneNumber }}</label>
+  <br>
+  <label>Favorite Dish: {{ registrationCtrl.userInfo.favoriteDish }}</label>
+  <br>
+  <label> {{ registrationCtrl.favoriteDishTitle }} </label>
+  <br>
+  <label> {{ registrationCtrl.favoriteDishDescription }} </label>
+  <br>
+  <img class="img-responsive" width="250" height="150"
+  ng-src="https://secure-journey-34634.herokuapp.com/images/{{ registrationCtrl.userInfo.favoriteDish }}.json" alt="{{ registrationCtrl.userInfo.favoriteDish }}">
+  <br>
+</div>
+<div ng-if="!registrationCtrl.userInfo.firstName">
+  <p>Not Signed Up Yet. <a ui-sref="public.signup">Sign up Now!</a> </p>
+</div>
+</div>
